@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+	
+       <xacro:property name="bed_height"  value="1.0" />
+       <xacro:property name="bed_length"  value="5.0" />
+       <xacro:property name="bed_width"   value="2.0" />
+       <xacro:property name="soil_height" value="0.9" />
+       <xacro:property name="wood_board_width"  value="0.04" />
+       	
+</robot>
