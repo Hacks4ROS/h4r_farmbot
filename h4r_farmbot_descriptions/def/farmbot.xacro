@@ -7,9 +7,16 @@
 	
        
        	<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
-       	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/properties.xacro"/>
-       	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/bed.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/frame.xacro"/>
+        
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/properties.xacro"/>
 
+             		
+       	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/bed.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/rails.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/boom.xacro"/>
+       	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/vertical.xacro"/>
+       		
        
        	
 </robot>

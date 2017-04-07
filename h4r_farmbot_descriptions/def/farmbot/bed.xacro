@@ -10,50 +10,52 @@
        <rr_joint_fixed parent="base_link" child="soil" origin_z="${soil_height/2}" />
        <xacro:rr_simple_box name="soil" x_size="${bed_length}" y_size="${bed_width}" z_size="${soil_height}" gazebo_material="H4R/Soil0" density="1400" />	
        
-       	
-       <xacro:macro name="fb_bed_side" params="side">
-       		<xacro:if value="${side==0 or side==1}">
-       			<xacro:property name="origin_x_abs" value="0"/>
-       			<xacro:property name="origin_y_abs" value="${bed_width/2+wood_board_width/2}"/>
-				<xacro:property name="length" value="${bed_length}"/>
-       			<xacro:property name="rot" value="0"/>
-       		</xacro:if>
-       	
-       		<xacro:if value="${side==2 or side==3}">
-       			<xacro:property name="origin_x_abs" value="${bed_length/2+wood_board_width/2}"/>
-       			<xacro:property name="origin_y_abs" value="0"/>
-				<xacro:property name="length" value="${bed_width+wood_board_width*2}"/>       				    			
-       			<xacro:property name="rot" value="${rr_const_pi/2}"/>
-       		</xacro:if>
-       		
-       		<xacro:if value="${side%2}">
-       			<xacro:property name="origin_x" value="${origin_x_abs}"/>
-       			<xacro:property name="origin_y" value="${origin_y_abs}"/>
-       		</xacro:if>
-       		<xacro:unless value="${side%2}">
-       			<xacro:property name="origin_x" value="${-origin_x_abs}"/>
-       			<xacro:property name="origin_y" value="${-origin_y_abs}"/>
-       		</xacro:unless>
-       		
-       		
-       		<rr_joint_fixed parent="base_link" 
-       		                child="bed_wood_frame_${side}" 
-       		                origin_x="${origin_x}" 
-       		                origin_y="${origin_y}" 
-       			            origin_z="${bed_height/2}" 
-       		                origin_Y="${rot}"/> 
-       		<xacro:rr_simple_box name="bed_wood_frame_${side}" 
-       							 x_size="${length}" 
-       							 y_size="${wood_board_width}" 
-       							 z_size="${bed_height}" 
-       							 gazebo_material="H4R/WoodFaded0" 
-       							 density="730" />
-       </xacro:macro>	
-       	
-       
-       <xacro:fb_bed_side side="0"/>
-	   <xacro:fb_bed_side side="1"/>
-       <xacro:fb_bed_side side="2"/>
-       <xacro:fb_bed_side side="3"/>
-       
+       <xacro:fb_frame 
+	       name="bed_wood_frame" 
+	       parent="base_link" 
+	       side="0" 
+	       width="${bed_width}" 
+		   height="${bed_height}"
+       	   length="${bed_length}" 
+	       thickness="0.04"
+	       gazebo_material="H4R/WoodFaded0" 
+	       density="730" 
+       	/>
+
+       	<xacro:fb_frame 
+	       name="bed_wood_frame" 
+	       parent="base_link" 
+	       side="1" 
+	       width="${bed_width}" 
+		   height="${bed_height}"
+       	   length="${bed_length}" 
+	       thickness="0.04"
+	       gazebo_material="H4R/WoodFaded0" 
+	       density="730" 
+       	/>
+   	
+       	<xacro:fb_frame 
+	       name="bed_wood_frame" 
+	       parent="base_link" 
+	       side="2" 
+	       width="${bed_width}" 
+		   height="${bed_height}"
+       	   length="${bed_length}" 
+	       thickness="0.04"
+	       gazebo_material="H4R/WoodFaded0" 
+	       density="730" 
+       	/>
+   	   
+        <xacro:fb_frame 
+	       name="bed_wood_frame" 
+	       parent="base_link" 
+	       side="3" 
+	       width="${bed_width}" 
+		   height="${bed_height}"
+       	   length="${bed_length}" 
+	       thickness="0.04"
+	       gazebo_material="H4R/WoodFaded0" 
+	       density="730" 
+       	/>
+   
 </robot>

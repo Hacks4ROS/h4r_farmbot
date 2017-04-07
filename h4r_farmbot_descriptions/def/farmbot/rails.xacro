@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+       	
+ 	  
+       <xacro:fb_frame 
+	       name="rail_frame" 
+	       parent="base_link" 
+	       side="0" 
+	       width="${bed_width}" 
+		   height="${rail_height}"
+		   height_offset="${bed_height+foot_height}"       
+       	   length="${bed_length}" 
+	       thickness="${rail_width}"
+	       gazebo_material="Gazebo/FlatBlack" 
+	       density="730" 
+       	/>
+
+       	<xacro:fb_frame 
+	       name="rail_frame" 
+	       parent="base_link" 
+	       side="1" 
+	       width="${bed_width}" 
+		   height="${rail_height}"
+		   height_offset="${bed_height+foot_height}"             	
+       	   length="${bed_length}" 
+	       thickness="${rail_width}"
+	       gazebo_material="Gazebo/FlatBlack" 
+	       density="730" 
+       	/>  
+   	
+       	<xacro:fb_frame 
+	       name="rail_frame" 
+	       parent="base_link" 
+	       side="2" 
+	       width="${bed_width}" 
+		   height="${rail_height}"
+		   height_offset="${bed_height+foot_height}"             	
+       	   length="${bed_length}" 
+	       thickness="${rail_width}"
+	       gazebo_material="Gazebo/FlatBlack"  
+	       density="730" 
+       	/>  
+   	   
+        <xacro:fb_frame 
+	       name="rail_frame" 
+	       parent="base_link" 
+	       side="3" 
+	       width="${bed_width}" 
+		   height="${rail_height}"
+		   height_offset="${bed_height+foot_height}"              
+       	   length="${bed_length}" 
+	       thickness="${rail_width}"
+	       gazebo_material="Gazebo/FlatBlack" 
+	       density="730" 
+       	/>  
+          	
+       	
+       <!-- Rail Sliders -->
+	   <xacro:rr_simple_box name="rail_slider_left"  x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" gazebo_material="Gazebo/FlatBlack" />
+	   <xacro:rr_simple_box name="rail_slider_right" x_size="${rail_slider_length}" y_size="${rail_slider_width}" z_size="${rail_slider_height}" weight="${rail_slider_weight}" gazebo_material="Gazebo/FlatBlack" />
+				
+	   <xacro:rr_joint_fixed parent="rail_slider_left" child="rail_slider_right" origin_y="${bed_width + rail_slider_width + rail_width*2}" />
+				
+	   <!-- Rail Axis -->	
+	   <xacro:rr_linear_axis parent="rail_frame_0" 
+			                  child="rail_slider_left" 
+			   	              origin_x="${ -( (rail_length/2) - (rail_slider_length/2) ) + rail_length_offset_start}"
+							  origin_y="${ -( (rail_width/2)  + (rail_slider_width/2) )}" 
+			   				  effort="1000.0"
+						      lower ="0"
+						      upper="${rail_length - rail_slider_width - rail_length_offset_start - rail_length_offset_end}" 
+							  velocity="1"
+							  axis="x"
+							  ros_control="${ros_control}"
+			   				  ros_control_position="true"
+							  joint_name="rail_joint"
+								/>	
+       
+
+	
+</robot>
+
