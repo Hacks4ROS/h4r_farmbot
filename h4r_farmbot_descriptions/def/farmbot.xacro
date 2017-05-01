@@ -16,7 +16,6 @@
         <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/rails.xacro"/>
         <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/boom.xacro"/>
        	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/vertical.xacro"/>
-       		
-       
+       	<xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/utm.xacro"/>
        	
 </robot>
