@@ -15,5 +15,6 @@
   <run_depend>h4r_gazebo_stuff</run_depend>
   
   <export>
+	<gazebo_ros gazebo_media_path="${prefix}"/>     
   </export>
 </package>
