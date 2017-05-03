@@ -9,7 +9,7 @@
           <arg name="posZ" value="0" />
         
           <arg name="yaw"          value="0" />
-          <arg name="model_params" value="static:=true" />
+          <arg name="model_params" value="" />
 	</include> 
 	
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -17,17 +17,17 @@
   </include>	
 	
   
- 	<!-- Load joint controller configurations from YAML file to parameter server -->
-   <rosparam file="$(find h4r_rapid_robot_xacros)/config/gantry.yaml" command="load"/>
+ 	<!-- Load joint controller configurations from YAML file to parameter server
+   <rosparam file="$(find h4r_rapid_robot_xacros)/config/gantry.yaml" command="load"/> -->
 
-  <!-- load the controllers -->
+  <!-- load the controllers 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" args="joint_state_controller joint_rail joint_boom joint_vertical"/>
+    output="screen" args="joint_state_controller joint_rail joint_boom joint_vertical"/>-->
 
-  <!-- convert joint states to TF transforms for rviz, etc -->
+  <!-- convert joint states to TF transforms for rviz, etc
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
     respawn="false" output="screen">
 
-  </node> 
+  </node>  -->
  
 </launch>
