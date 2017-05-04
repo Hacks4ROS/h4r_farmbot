@@ -76,6 +76,7 @@
 		<xacro:property name="foot_weight"  	value="1.0" />
 		
 		<xacro:property name="ros_control"  	value="true" />	
+       	<xacro:property name="mesh_version"  	value="v1.2" />	
        	
        	
 </robot>
