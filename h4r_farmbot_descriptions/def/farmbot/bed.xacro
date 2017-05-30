@@ -4,58 +4,58 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
        <link name="base_link" />
        
        <rr_joint_fixed parent="base_link" child="soil" origin_z="${soil_height/2}" />
-       <xacro:rr_simple_box name="soil" x_size="${bed_length}" y_size="${bed_width}" z_size="${soil_height}" gazebo_material="H4R/Soil0" density="1400" />	
+       <xacro:rr_simple_box name="soil" x_size="${bed_length}" y_size="${bed_width}" z_size="${soil_height}" gazebo_material="H4R/Soil0" density="1400" />    
        
        <xacro:fb_frame 
-	       name="bed_wood_frame" 
-	       parent="base_link" 
-	       side="0" 
-	       width="${bed_width}" 
-		   height="${bed_height}"
-       	   length="${bed_length}" 
-	       thickness="0.04"
-	       gazebo_material="H4R/WoodFaded0" 
-	       density="730" 
-       	/>
+           name="bed_wood_frame" 
+           parent="base_link" 
+           side="0" 
+           width="${bed_width}" 
+           height="${bed_height}"
+              length="${bed_length}" 
+           thickness="0.04"
+           gazebo_material="H4R/WoodFaded0" 
+           density="730" 
+           />
 
-       	<xacro:fb_frame 
-	       name="bed_wood_frame" 
-	       parent="base_link" 
-	       side="1" 
-	       width="${bed_width}" 
-		   height="${bed_height}"
-       	   length="${bed_length}" 
-	       thickness="0.04"
-	       gazebo_material="H4R/WoodFaded0" 
-	       density="730" 
-       	/>
-   	
-       	<xacro:fb_frame 
-	       name="bed_wood_frame" 
-	       parent="base_link" 
-	       side="2" 
-	       width="${bed_width}" 
-		   height="${bed_height}"
-       	   length="${bed_length}" 
-	       thickness="0.04"
-	       gazebo_material="H4R/WoodFaded0" 
-	       density="730" 
-       	/>
-   	   
+           <xacro:fb_frame 
+           name="bed_wood_frame" 
+           parent="base_link" 
+           side="1" 
+           width="${bed_width}" 
+           height="${bed_height}"
+              length="${bed_length}" 
+           thickness="0.04"
+           gazebo_material="H4R/WoodFaded0" 
+           density="730" 
+           />
+       
+           <xacro:fb_frame 
+           name="bed_wood_frame" 
+           parent="base_link" 
+           side="2" 
+           width="${bed_width}" 
+           height="${bed_height}"
+              length="${bed_length}" 
+           thickness="0.04"
+           gazebo_material="H4R/WoodFaded0" 
+           density="730" 
+           />
+          
         <xacro:fb_frame 
-	       name="bed_wood_frame" 
-	       parent="base_link" 
-	       side="3" 
-	       width="${bed_width}" 
-		   height="${bed_height}"
-       	   length="${bed_length}" 
-	       thickness="0.04"
-	       gazebo_material="H4R/WoodFaded0" 
-	       density="730" 
-       	/>
+           name="bed_wood_frame" 
+           parent="base_link" 
+           side="3" 
+           width="${bed_width}" 
+           height="${bed_height}"
+              length="${bed_length}" 
+           thickness="0.04"
+           gazebo_material="H4R/WoodFaded0" 
+           density="730" 
+           />
    
 </robot>

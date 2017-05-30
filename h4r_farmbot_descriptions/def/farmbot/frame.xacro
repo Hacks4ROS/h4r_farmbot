@@ -4,47 +4,47 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-	
+    
 <xacro:macro name="fb_frame" params="name parent side width length thickness height height_offset:=0 gazebo_material:=Gazebo/Grey density:=1" >
-       		<xacro:if value="${side==0 or side==1}">
-       			<xacro:property name="origin_x_abs" value="0"/>
-       			<xacro:property name="origin_y_abs" value="${width/2+thickness/2}"/>
-				<xacro:property name="bar_length" value="${length}"/>
-       			<xacro:property name="rot" value="0"/>
-       		</xacro:if>
-       	
-       		<xacro:if value="${side==2 or side==3}">
-       			<xacro:property name="origin_x_abs" value="${length/2+thickness/2}"/>
-       			<xacro:property name="origin_y_abs" value="0"/>
-				<xacro:property name="bar_length" value="${width+thickness*2}"/>       				    			
-       			<xacro:property name="rot" value="${rr_const_pi/2}"/>
-       		</xacro:if>
-       		
-       		<xacro:if value="${side%2}">
-       			<xacro:property name="origin_x" value="${origin_x_abs}"/>
-       			<xacro:property name="origin_y" value="${origin_y_abs}"/>
-       		</xacro:if>
-       		<xacro:unless value="${side%2}">
-       			<xacro:property name="origin_x" value="${-origin_x_abs}"/>
-       			<xacro:property name="origin_y" value="${-origin_y_abs}"/>
-       		</xacro:unless>
-       		
-       		
-       		<rr_joint_fixed parent="${parent}" 
-       		                child="${name}_${side}" 
-       		                origin_x="${origin_x}" 
-       		                origin_y="${origin_y}" 
-       			            origin_z="${height/2+height_offset}"
-       		                origin_Y="${rot}"/> 
-       		<xacro:rr_simple_box name="${name}_${side}" 
-       							 x_size="${bar_length}" 
-       							 y_size="${thickness}" 
-       							 z_size="${height}"  
-       							 gazebo_material="${gazebo_material}" 
-       							 density="${density}" />
+               <xacro:if value="${side==0 or side==1}">
+                   <xacro:property name="origin_x_abs" value="0"/>
+                   <xacro:property name="origin_y_abs" value="${width/2+thickness/2}"/>
+                <xacro:property name="bar_length" value="${length}"/>
+                   <xacro:property name="rot" value="0"/>
+               </xacro:if>
+           
+               <xacro:if value="${side==2 or side==3}">
+                   <xacro:property name="origin_x_abs" value="${length/2+thickness/2}"/>
+                   <xacro:property name="origin_y_abs" value="0"/>
+                <xacro:property name="bar_length" value="${width+thickness*2}"/>                                       
+                   <xacro:property name="rot" value="${rr_const_pi/2}"/>
+               </xacro:if>
+               
+               <xacro:if value="${side%2}">
+                   <xacro:property name="origin_x" value="${origin_x_abs}"/>
+                   <xacro:property name="origin_y" value="${origin_y_abs}"/>
+               </xacro:if>
+               <xacro:unless value="${side%2}">
+                   <xacro:property name="origin_x" value="${-origin_x_abs}"/>
+                   <xacro:property name="origin_y" value="${-origin_y_abs}"/>
+               </xacro:unless>
+               
+               
+               <rr_joint_fixed parent="${parent}" 
+                               child="${name}_${side}" 
+                               origin_x="${origin_x}" 
+                               origin_y="${origin_y}" 
+                               origin_z="${height/2+height_offset}"
+                               origin_Y="${rot}"/> 
+               <xacro:rr_simple_box name="${name}_${side}" 
+                                    x_size="${bar_length}" 
+                                    y_size="${thickness}" 
+                                    z_size="${height}"  
+                                    gazebo_material="${gazebo_material}" 
+                                    density="${density}" />
        </xacro:macro>
-	   
+       
 </robot>
 
-       	
-       	
+           
+           

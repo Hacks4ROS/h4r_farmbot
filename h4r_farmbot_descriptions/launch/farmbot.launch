@@ -1,33 +1,85 @@
 <launch>
-	
-   <arg name="paused" value="true"/>
-   <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >  
-          <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/farmbot.xacro" />
-          <arg name="model_name" value="farmbot_spawner" />
-          <arg name="posX" value="0" />
-          <arg name="posY" value="0" />
-          <arg name="posZ" value="0" />
+    <arg name="rail_len" default="1.51" />
+    <arg name="rail_length_offset_start" default="0.01" />
+    <arg name="rail_length_offset_end"   default="0.01" />
+    
+    <arg name="boom_len" default="1.01" />
+    <arg name="boom_length_offset_start" default="0.01" />
+    <arg name="boom_length_offset_end"   default="0.01" />
+    
+    <arg name="boom_support_height" default="0.5" />
+    
+    <arg name="vertical_len" default="1.01" />
+    <arg name="vertical_length_offset_start" default="0.28" />
+    <arg name="vertical_length_offset_end"   default="0.01" />
+    
+    <arg name="vertical_axis_slider_offset" default="-0.05" />
+    
+    
+    
+    <arg name="paused" value="false"/>
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/farmbot.xacro" />
+        <arg name="model_name" value="farmbot_spawner" />
+        <arg name="posX" value="0" />
+        <arg name="posY" value="0" />
+        <arg name="posZ" value="0" />
         
-          <arg name="yaw"          value="0" />
-          <arg name="model_params" value="" />
-	</include> 
-	
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-   <arg name="paused" value="$(arg paused)"/>	  
-  </include>	
-	
-  
- 	<!-- Load joint controller configurations from YAML file to parameter server
-   <rosparam file="$(find h4r_rapid_robot_xacros)/config/gantry.yaml" command="load"/> -->
-
-  <!-- load the controllers 
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" args="joint_state_controller joint_rail joint_boom joint_vertical"/>-->
-
-  <!-- convert joint states to TF transforms for rviz, etc
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-    respawn="false" output="screen">
-
-  </node>  -->
- 
+        <arg name="yaw"          value="0" />
+        <arg name="model_params" value="" />
+    </include>
+    
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="$(arg paused)"/>
+    </include>
+    
+    
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find h4r_rapid_robot_xacros)/rviz/portal.rviz" />
+    
+    
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find h4r_rapid_robot_xacros)/config/gantry.yaml" command="load"/>
+    
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller joint_rail joint_boom joint_vertical"/>
+    
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen" />
+    
+    <node name="HB04" type="xhc_hb04_node" pkg="h4r_xhc_hb04" >
+        <remap from="~/abs_x_mc" to="/joint_rail/command" />
+        <remap from="~/abs_y_mc" to="/joint_boom/command" />
+        <remap from="~/abs_z_mc" to="/joint_vertical/command" />
+        <remap from="~/joint_states" to="/joint_states" />
+        
+        
+        <param name="joint_name_x_mc" value="rail_joint" />
+        <param name="joint_name_y_mc" value="boom_joint" />
+        <param name="joint_name_z_mc" value="vertical_joint" />
+        
+    </node>
+    
+    
+    <param name="robot_description"  command="$(find xacro)/xacro --inorder '$(find h4r_farmbot_descriptions)/def/farmbot.xacro'
+        rail_len:=$(arg rail_len)
+        boom_len:=$(arg boom_len)
+        vertical_len:=$(arg vertical_len)
+        
+    
+        rail_length_offset_start:=$(arg rail_length_offset_start)
+        rail_length_offset_end:=$(arg rail_length_offset_end)
+        
+        boom_length_offset_start:=$(arg boom_length_offset_start)
+        boom_length_offset_end:=$(arg boom_length_offset_end)
+    
+        boom_support_height:=$(arg boom_support_height)
+    
+        vertical_length_offset_start:=$(arg vertical_length_offset_start)
+        vertical_length_offset_end:=$(arg vertical_length_offset_end)
+            
+        vertical_axis_slider_offset:=$(arg vertical_axis_slider_offset) 
+        "/>
+    
 </launch>
