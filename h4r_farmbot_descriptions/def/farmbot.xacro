@@ -10,12 +10,10 @@
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/properties.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/bed.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/rails.xacro"/>
-    <!--
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/boom.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/vertical.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/utm.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/toolbays.xacro"/>
-    -->
     <!-- ROS CONTROL PLUGIN -->
     <xacro:rr_roscontrol_controller />
 </robot>
