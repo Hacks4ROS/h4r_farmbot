@@ -5,6 +5,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
     
+    <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
     <xacro:rr_joint_fixed parent="vertical" child="utm" origin_y="0.0465" origin_z="${-vertical_length/2+0.002}" origin_Y="${-rr_const_pi/2}" />
     
     <link name="utm">
@@ -48,6 +49,7 @@
         </xacro:rr_inertia_cylinder_solid>
     </link>
     
-    
-    
+
+        
+    <xacro:fb_utm_magnet_group name="utm" parent="utm" origin_z="0.0075" magnet_strength="50" />
 </robot>

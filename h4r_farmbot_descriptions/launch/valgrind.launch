@@ -29,11 +29,11 @@
         <arg name="model_params" value="" />
     </include>
     
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="paused" value="$(arg paused)"/>
-    </include>
+     <node launch-prefix="valgrind --tool=memcheck --leak-check=full --track-origins=yes --undef-value-errors=yes " 
+     name="gazebo" pkg="gazebo_ros" type="gazebo"
+     args="$(optenv SIMX) worlds/empty.world    --minimal_comms " respawn="false" output="screen"/>
     
-    <!--
+    
     
      <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
@@ -42,20 +42,6 @@
         <arg name="posY" value="-0.15" />
         <arg name="posZ" value="1.179" />
         
-        <arg name="yaw"          value="-1.57" />
-        <arg name="model_params" value="" />
-    </include>
-    
-    -->
-    
-    
-     <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
-        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
-        <arg name="model_name" value="farmbot_tool_water" />
-        <arg name="posX" value="-2.5" />
-        <arg name="posY" value="-0.9284" />
-        <arg name="posZ" value="1.2063" />
-         
         <arg name="yaw"          value="-1.57" />
         <arg name="model_params" value="" />
     </include>

@@ -34,7 +34,7 @@
     <xacro:property name="boom_support_height"                 value="0.5" />
     
     <xacro:property name="vertical_length"                     value="1.01" />
-    <xacro:property name="vertical_length_offset_start"        value="0.28" />
+    <xacro:property name="vertical_length_offset_start"        value="0.40" />
     <xacro:property name="vertical_length_offset_end"          value="0.01" />
     
     <xacro:property name="vertical_axis_slider_offset"         value="-0.05" />
