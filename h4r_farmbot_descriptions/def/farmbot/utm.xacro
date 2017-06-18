@@ -50,6 +50,14 @@
     </link>
     
 
-        
-    <xacro:fb_utm_magnet_group name="utm" parent="utm" origin_z="0.0075" magnet_strength="50" />
+                <gazebo>       
+            <plugin name="dipole_magnet" filename="libstorm_gazebo_dipole_magnet.so">
+                <bodyName>utm</bodyName>
+                <dipole_moment>0 0 20</dipole_moment>
+                <!-- Set to false if not using ROS -->
+                <shouldPublish>false</shouldPublish>
+                <topicNs>magnet_utm_debug</topicNs>
+                <updateRate>50</updateRate>
+            </plugin>
+        </gazebo>
 </robot>

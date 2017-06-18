@@ -19,19 +19,16 @@
                                   
            
         <link name="${name}">
-
-            
-            <collision name="collision">
-                <geometry>
-                    <cylinder radius="0.015" length="0.005" />
-                </geometry>
-            </collision>
-            
             <visual name="visual">
                 <geometry>
-                    <cylinder radius="0.0075" length="0.005" />
+                    <cylinder radius="0.007" length="0.005" />
                 </geometry>
             </visual>
+            <collision name="collision">
+                <geometry>
+                    <cylinder radius="0.007" length="0.005" />
+                </geometry>
+            </collision>
         </link>
         
         <inertial>
@@ -40,23 +37,53 @@
             </xacro:rr_inertia_cylinder_solid>
         </inertial>
         
-        <gazebo>
+    </xacro:macro>
+    
+    <xacro:macro name="fb_utm_magnet_group" params="name parent origin_x:=0 origin_y:=0 origin_z:=0 origin_R:=0 origin_P:=0 origin_Y:=0" >
+        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_0" parent="${parent}" origin_x="0" origin_y= "0.0125" origin_z="${origin_z}"/>l       
+        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_1" parent="${parent}" origin_x="-0.010825"  origin_y="-0.00625"  origin_z="${origin_z}"/>
+        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_2" parent="${parent}" origin_x= "0.010825"  origin_y="-0.00625"  origin_z="${origin_z}"/>
+    </xacro:macro>
+    
+    <xacro:macro name="fb_sim_magnet" params="name parent origin_x:=0 origin_y:=0 origin_z:=0 origin_R:=0 origin_P:=0 origin_Y:=0 magnet_strength:=2" >
+        <rr_joint_fixed parent="${parent}" 
+               child="${name}" 
+               origin_x="${origin_x}" 
+               origin_y="${origin_y}" 
+               origin_z="${origin_z}" 
+               origin_P="${origin_P}" 
+               origin_R="${origin_R}"
+               origin_Y="${origin_Y}"/>
+        
+        
+        <link name="${name}">
+            
+            <visual name="visual">
+                <geometry>
+                    <cylinder radius="0.035" length="0.005" />
+                </geometry>
+            </visual>
+
+            <collision name="collision">
+                <geometry>
+                    <cylinder radius="0.035" length="0.005" />
+                </geometry>
+            </collision>    
+                    
+            <xacro:rr_inertia_cylinder_solid r="0.035" h="0.005" mass="0.10" >
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+        <gazebo>       
             <plugin name="dipole_magnet" filename="libstorm_gazebo_dipole_magnet.so">
                 <bodyName>${name}</bodyName>
                 <dipole_moment>0 0 ${magnet_strength}</dipole_moment>
-                <!-- Set to false if not using ROS -->
                 <shouldPublish>false</shouldPublish>
                 <topicNs>magnet_${name}_debug</topicNs>
-                <updateRate>100</updateRate>
+                <updateRate>10</updateRate>
             </plugin>
         </gazebo>
-        
-    </xacro:macro>
-    
-    <xacro:macro name="fb_utm_magnet_group" params="name parent origin_x:=0 origin_y:=0 origin_z:=0 origin_R:=0 origin_P:=0 origin_Y:=0 magnet_strength:=10" >
-        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_0" parent="${parent}" magnet_strength="10" origin_x="0" origin_y= "0.0125" origin_R="${rr_const_pi}" origin_z="${origin_z}"/>l       
-        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_1" parent="${parent}" magnet_strength="10" origin_x="-0.010825"  origin_y="-0.00625"  origin_z="${origin_z}"/>
-        <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_2" parent="${parent}" magnet_strength="10" origin_x= "0.010825"  origin_y="-0.00625"  origin_z="${origin_z}"/>
-    </xacro:macro>
+    </xacro:macro>               
     
 </robot>

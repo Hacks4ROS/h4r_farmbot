@@ -7,31 +7,37 @@
 
         <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
         <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
-        
         <xacro:property name="mesh_version"            value="v1.2" />
-    
-        <link name="watering_nozzle_top">
+                 
+            
+        <link name="world" />
+                <rr_joint_fixed parent="world" 
+               child="utm" 
+
+               origin_z="0.4" 
+                />  
+                         
+                                
+        <link name="utm">
             <visual>
                 <geometry>
-                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/watering_nozzle_top.stl"/>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/utm.stl"/>
                 </geometry>
             </visual>
             
-            <collision>
-                <origin xyz="0 0 ${0.035/4}" rpy="0 0 0" />
+            <collision name="utm_col">
+                <origin xyz="0 0 0.016" rpy="0 0 0" />
                 <geometry>
-                     <cylinder radius="0.035" length="0.016" />
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/utm_collision.stl" scale="0.001 0.001 0.001" />
                 </geometry>
             </collision>
             
-            <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" >
-                <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
+            
+            <xacro:rr_inertia_cylinder_solid r="0.05" h="0.1" mass="0.25" >
+                <origin xyz="0 0 0" rpy="0 0 0" />
             </xacro:rr_inertia_cylinder_solid>
         </link>
+         
+        <xacro:fb_sim_magnet name="magnet" parent="utm" origin_z="0.008"/> 
         
-        
-        <xacro:fb_utm_magnet_group name="water" parent="watering_nozzle_top" origin_z="0.0175" />
-        <xacro:fb_sim_magnet name="water_magnet" parent="watering_nozzle_top" /> 
-            
-            
 </robot>
