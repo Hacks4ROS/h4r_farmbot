@@ -6,8 +6,8 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
     
     <xacro:property name="bed_height"                 value="1.0" />
-    <xacro:property name="bed_length"                 value="5.0" />
-    <xacro:property name="bed_width"                  value="2.0" />
+    <xacro:property name="bed_length"                 value="1.5" />
+    <xacro:property name="bed_width"                  value="1.0" />
     <xacro:property name="soil_height"                value="0.9" />
     <xacro:property name="wood_board_width"           value="0.04" />
     

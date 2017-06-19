@@ -38,21 +38,23 @@
     </xacro:macro>
     
     <xacro:fb_toolbay  
-           parent="rail_frame_3" 
+           parent="rail_frame_2" 
            number="0" 
            mesh_version="${mesh_version}" 
            origin_z="0.113"
-              origin_y="0.117"
-           origin_x="0.25"       
+           origin_y="-0.117"
+           origin_x="0.25"
+           origin_Y="${rr_const_pi}"   
         />
     
     <xacro:fb_toolbay 
-           parent="rail_frame_3" 
+           parent="rail_frame_2" 
            number="1" 
            mesh_version="${mesh_version}" 
            origin_z="0.113"
-              origin_y="0.117"
-           origin_x="-0.25"       
+           origin_y="-0.117"
+           origin_x="-0.25"  
+           origin_Y="${rr_const_pi}" 
         />
     
 </robot>

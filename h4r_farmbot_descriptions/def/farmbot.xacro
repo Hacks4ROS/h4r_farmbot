@@ -6,6 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro" name="h4r_farmbot">
     
     <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+    <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/> 
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/frame.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/properties.xacro"/>
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/bed.xacro"/>
@@ -19,7 +20,6 @@
     
    
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/toolbays.xacro"/>
-    <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/> 
    
     <!-- ROS CONTROL PLUGIN -->
     <xacro:rr_roscontrol_controller />

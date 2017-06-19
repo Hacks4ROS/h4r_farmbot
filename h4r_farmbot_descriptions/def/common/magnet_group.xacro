@@ -81,7 +81,7 @@
                 <dipole_moment>0 0 ${magnet_strength}</dipole_moment>
                 <shouldPublish>false</shouldPublish>
                 <topicNs>magnet_${name}_debug</topicNs>
-                <updateRate>10</updateRate>
+                <updateRate>100</updateRate>
             </plugin>
         </gazebo>
     </xacro:macro>               

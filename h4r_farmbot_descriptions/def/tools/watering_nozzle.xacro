@@ -31,7 +31,7 @@
         
         
         <xacro:fb_utm_magnet_group name="water" parent="watering_nozzle_top" origin_z="0.0175" />
-        <xacro:fb_sim_magnet name="water_magnet" parent="watering_nozzle_top" /> 
+        <xacro:fb_sim_magnet name="water_magnet" parent="watering_nozzle_top" origin_z="0.005" /> 
             
             
 </robot>
