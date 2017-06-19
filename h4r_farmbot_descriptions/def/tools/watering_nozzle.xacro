@@ -18,9 +18,23 @@
             </visual>
             
             <collision>
-                <origin xyz="0 0 ${0.035/4}" rpy="0 0 0" />
+                <origin xyz="0 0 0.006" rpy="0 0 0" />
                 <geometry>
-                     <cylinder radius="0.035" length="0.016" />
+                    <box size="0.063 0.07 0.0074" />
+                </geometry>
+            </collision>
+            
+            <collision>
+                <origin xyz="0 0 0.0112" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.035" length="0.002" />
+                </geometry>
+            </collision>
+            
+            <collision>
+                <origin xyz="0 0 0.001" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.035" length="0.002" />
                 </geometry>
             </collision>
             
