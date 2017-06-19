@@ -3,17 +3,16 @@
     <arg name="paused" default="true"/>
     
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="paused" value="$(arg paused)"/>
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="world_name"  value="$(find h4r_farmbot_descriptions)/worlds/utm_test.world" />
     </include>
-    
-    
     
     <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
         <arg name="model_name" value="farmbot_test_utm" />
         <arg name="posX" value="0" />
         <arg name="posY" value="0" />
-        <arg name="posZ" value="0.11" />
+        <arg name="posZ" value="0.5333" />
          
         <arg name="yaw"          value="0" />
         <arg name="model_params" value="static:=true" />

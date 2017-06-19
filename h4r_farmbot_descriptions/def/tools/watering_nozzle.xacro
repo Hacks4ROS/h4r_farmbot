@@ -16,14 +16,12 @@
                     <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/watering_nozzle_top.stl"/>
                 </geometry>
             </visual>
-            
             <collision>
                 <origin xyz="0 0 0.006" rpy="0 0 0" />
                 <geometry>
-                    <box size="0.063 0.07 0.0074" />
+                    <box size="0.063 0.04 0.0074" />
                 </geometry>
             </collision>
-            
             <collision>
                 <origin xyz="0 0 0.0112" rpy="0 0 0" />
                 <geometry>
@@ -37,6 +35,9 @@
                     <cylinder radius="0.035" length="0.002" />
                 </geometry>
             </collision>
+            
+             
+ 
             
             <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" >
                 <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />

@@ -14,7 +14,7 @@
         </visual>
         
         <collision name="utm_col">
-            <origin xyz="0 0 0.016" rpy="0 0 0" />
+            <origin xyz="0 0 0.007" rpy="0 0 0" />
             <geometry>
                 <mesh filename="package://h4r_farmbot_descriptions/mesh/utm_collision.stl" scale="0.001 0.001 0.001" />
             </geometry>
