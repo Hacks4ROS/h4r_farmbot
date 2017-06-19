@@ -60,13 +60,13 @@
             
             <visual name="visual">
                 <geometry>
-                    <cylinder radius="0.035" length="0.005" />
+                    <cylinder radius="0.03" length="0.005" />
                 </geometry>
             </visual>
 
             <collision name="collision">
                 <geometry>
-                    <cylinder radius="0.035" length="0.005" />
+                    <cylinder radius="0.03" length="0.005" />
                 </geometry>
             </collision>    
                     

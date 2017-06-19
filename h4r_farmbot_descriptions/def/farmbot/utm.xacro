@@ -5,20 +5,18 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
     
-    <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
-    <xacro:rr_joint_fixed parent="vertical" child="utm" origin_y="0.0465" origin_z="${-vertical_length/2+0.002}" origin_Y="${-rr_const_pi/2}" />
-    
+    <!-- UTM -->
     <link name="utm">
         <visual>
             <geometry>
                 <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/utm.stl"/>
             </geometry>
-            
         </visual>
         
-        <collision>
+        <collision name="utm_col">
+            <origin xyz="0 0 0.016" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/utm.stl"/>
+                <mesh filename="package://h4r_farmbot_descriptions/mesh/utm_collision.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
         
@@ -28,6 +26,9 @@
         </xacro:rr_inertia_cylinder_solid>
     </link>
     
+    <xacro:fb_sim_magnet name="magnet" parent="utm" origin_z="0.008"/>
+    
+    <!-- UTM COVER -->
     <xacro:rr_joint_fixed parent="utm" child="utm_cover" origin_z="0.051" origin_P="${-rr_const_pi}" origin_Y="${-rr_const_pi}" />
     <link name="utm_cover">
         <visual>
@@ -49,15 +50,5 @@
         </xacro:rr_inertia_cylinder_solid>
     </link>
     
-
-                <gazebo>       
-            <plugin name="dipole_magnet" filename="libstorm_gazebo_dipole_magnet.so">
-                <bodyName>utm</bodyName>
-                <dipole_moment>0 0 20</dipole_moment>
-                <!-- Set to false if not using ROS -->
-                <shouldPublish>false</shouldPublish>
-                <topicNs>magnet_utm_debug</topicNs>
-                <updateRate>50</updateRate>
-            </plugin>
-        </gazebo>
+    
 </robot>
