@@ -24,7 +24,28 @@
                 <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
             </xacro:rr_inertia_cylinder_solid>
         </link>
+       
         
+        <xacro:rr_joint_fixed parent="watering_nozzle_top" child="watering_nozzle_bottom" />
+        <link name="watering_nozzle_bottom">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/watering_nozzle_bottom.stl"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <cylinder radius="0.024" length="0.0065" />
+                </geometry>
+            </collision>
+            
+            <xacro:rr_inertia_cylinder_solid r="0.024" h="0.0065" mass="0.05" >
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+         
         
         <xacro:fb_utm_magnet_group name="water" parent="watering_nozzle_top" origin_z="0.0175" />
         <xacro:fb_sim_magnet name="water_magnet" parent="watering_nozzle_top" origin_z="0.005" /> 
