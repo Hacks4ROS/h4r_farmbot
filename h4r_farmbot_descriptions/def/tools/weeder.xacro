@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro" name="h4r_farmbot_tool_water">
+
+        <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/tool_collision.xacro"/>
+        
+        <xacro:property name="mesh_version"            value="v1.2" />
+    
+        <xacro:macro name="weeder_spike" params="no origin_x:=0 origin_y:=0" >
+            <xacro:rr_joint_fixed parent="weeder" child="weeder_spike_${no}" origin_x="${origin_x}" origin_y="${origin_y}" />
+            <link name="weeder_spike_${no}">
+                <visual>
+                    <geometry>
+                        <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/weeder_spike.stl"/>
+                    </geometry>
+                </visual>
+    
+                
+                <collision>
+                    <geometry>
+                        <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/weeder_spike.stl"/>
+                    </geometry>
+                </collision>
+                
+                
+                
+                <xacro:rr_inertia_cylinder_solid r="0.024" h="0.0065" mass="0.05" ><!-- TODO Incorrect! -->
+                    <origin xyz="0 0 0" rpy="0 0 0" />
+                </xacro:rr_inertia_cylinder_solid>
+            </link>  
+        </xacro:macro>    
+            
+            
+            
+            
+        <link name="weeder">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/weeder.stl"/>
+                </geometry>
+            </visual>
+
+            <xacro:fb_tool_collision />
+            
+            <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" >
+                <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+                
+        <xacro:fb_utm_magnet_group name="weeder" parent="weeder" origin_z="0.0175" />
+        <xacro:fb_sim_magnet name="weeder_magnet" parent="weeder" origin_z="0.005" /> 
+            
+            
+        <xacro:rr_joint_fixed parent="weeder" child="weeder_blade" />
+        <link name="weeder_blade">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/weeder_blade.stl"/>
+                </geometry>
+            </visual>
+
+            
+            <collision>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/weeder_blade.stl"/>
+                </geometry>
+            </collision>
+            
+            
+            
+            <xacro:rr_inertia_cylinder_solid r="0.024" h="0.0065" mass="0.05" ><!-- TODO Incorrect! -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+       <xacro:weeder_spike no="0"  origin_x="0.01" origin_y="-0.01732"/>
+       <xacro:weeder_spike no="1"  origin_x="0.01" origin_y="0.01732"/>
+       <xacro:weeder_spike no="2"  origin_x="-0.02" />
+
+            
+</robot>
