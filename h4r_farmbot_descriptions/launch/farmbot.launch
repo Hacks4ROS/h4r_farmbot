@@ -16,6 +16,16 @@
     <arg name="vertical_axis_slider_offset" default="-0.05" />
     <arg name="ros_control" default="true" />
     
+        
+    <arg name="tools"       default="true" />
+    <arg name="seeder"      default="$(arg tools)" />
+    <arg name="watering"    default="$(arg tools)" />
+    <arg name="weeder"      default="$(arg tools)" />
+    <arg name="soil"        default="$(arg tools)" />
+    <arg name="seed_bin"    default="$(arg tools)" />
+    <arg name="seed_tray"   default="$(arg tools)" />
+        
+        
 
     <arg name="paused" value="true"/>
     <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
@@ -34,7 +44,7 @@
     </include>
     
     
-     <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+     <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg seeder)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seeder.xacro" />
         <arg name="model_name" value="seeder" />
         <arg name="posX" value="-0.6353" />
@@ -45,7 +55,7 @@
         <arg name="model_params" value="" />
     </include> 
     
-    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg watering)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
         <arg name="model_name" value="farmbot_tool_water" />
         <arg name="posX" value="-0.6353" />
@@ -56,7 +66,7 @@
         <arg name="model_params" value="" />
     </include>
     
-    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg weeder)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/weeder.xacro" />
         <arg name="model_name" value="weeder" />
         <arg name="posX" value="-0.6353" />
@@ -67,7 +77,7 @@
         <arg name="model_params" value="" />
     </include>
     
-    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg soil)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/soil_sensor.xacro" />
         <arg name="model_name" value="soil_sensor" />
         <arg name="posX" value="-0.6353" />
@@ -78,7 +88,7 @@
         <arg name="model_params" value="" />
     </include>  
     
-    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg seed_bin)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seed_bin.xacro" />
         <arg name="model_name" value="seed_bin" />
         <arg name="posX" value="-0.6353" />
@@ -89,7 +99,7 @@
         <arg name="model_params" value="" />
     </include>
    
-    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg seed_tray)">
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seed_tray.xacro" />
         <arg name="model_name" value="seed_tray" />
         <arg name="posX" value="-0.6353" />
