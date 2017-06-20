@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro" name="h4r_farmbot_tool_water">
+
+        <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/tool_collision.xacro"/>
+        
+        <xacro:property name="mesh_version"            value="v1.2" />
+    
+        <link name="seeder">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seeder.stl"/>
+                </geometry>
+            </visual>
+
+            <xacro:fb_tool_collision />
+            
+            <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" >
+                <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+       
+        <xacro:rr_joint_fixed parent="seeder" child="seeder_needle_lock" origin_y="-0.0175"/>
+        <link name="seeder_needle_lock">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seeder_needle_lock.dae"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seeder_needle_lock.dae"/>
+                </geometry>
+            </collision>
+            
+            <xacro:rr_inertia_cylinder_solid r="0.024" h="0.0065" mass="0.05" ><!-- TODO wrong -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+        <xacro:rr_joint_fixed parent="seeder_needle_lock" child="seeder_needle" />
+        <link name="seeder_needle">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seeder_needle.dae"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seeder_needle.dae"/>
+                </geometry>
+            </collision>
+            
+            <xacro:rr_inertia_cylinder_solid r="0.024" h="0.0065" mass="0.05" ><!-- TODO wrong -->
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+
+         
+        
+        <xacro:fb_utm_magnet_group name="seeder" parent="seeder" origin_z="0.0175" />
+        <xacro:fb_sim_magnet name="seeder_magnet" parent="seeder" origin_z="0.005" /> 
+            
+            
+</robot>
