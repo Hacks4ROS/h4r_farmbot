@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro" name="h4r_farmbot_tool_water">
+
+        <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/tool_collision.xacro"/>
+        
+        <xacro:property name="mesh_version"            value="v1.2" />
+    
+            
+        <xacro:rr_static />
+        <link name="seed_bin">
+            <visual>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seed_bin.stl"/>
+                </geometry>
+            </visual>
+
+
+            <collision>
+                <geometry>
+                    <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/seed_bin.stl"/>
+                </geometry>
+            </collision>
+            
+                        
+            <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" ><!--TODO THIS INERTIA IS FAR FROM RIGHT -->
+                <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
+            </xacro:rr_inertia_cylinder_solid>
+        </link>
+        
+        
+</robot>
