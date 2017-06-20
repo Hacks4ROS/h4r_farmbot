@@ -7,6 +7,7 @@
 
         <xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
         <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/magnet_group.xacro"/>
+        <xacro:include filename="$(find h4r_farmbot_descriptions)/def/common/tool_collision.xacro"/>
         
         <xacro:property name="mesh_version"            value="v1.2" />
     
@@ -16,28 +17,8 @@
                     <mesh filename="package://h4r_farmbot_descriptions/mesh/${mesh_version}/watering_nozzle_top.stl"/>
                 </geometry>
             </visual>
-            <collision>
-                <origin xyz="0 0 0.006" rpy="0 0 0" />
-                <geometry>
-                    <box size="0.063 0.04 0.0074" />
-                </geometry>
-            </collision>
-            <collision>
-                <origin xyz="0 0 0.0112" rpy="0 0 0" />
-                <geometry>
-                    <cylinder radius="0.035" length="0.002" />
-                </geometry>
-            </collision>
-            
-            <collision>
-                <origin xyz="0 0 0.001" rpy="0 0 0" />
-                <geometry>
-                    <cylinder radius="0.035" length="0.002" />
-                </geometry>
-            </collision>
-            
-             
- 
+
+            <xacro:fb_tool_collision />
             
             <xacro:rr_inertia_cylinder_solid r="0.035" h="0.01" mass="0.25" >
                 <origin xyz="0 0 ${0.035/2}" rpy="0 0 0" />
