@@ -35,18 +35,79 @@
     
     
      <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seeder.xacro" />
+        <arg name="model_name" value="seeder" />
+        <arg name="posX" value="-0.6353" />
+        <arg name="posY" value="-0.35" />
+        <arg name="posZ" value="1.1777" />
+        
+        <arg name="yaw"          value="-1.57" />
+        <arg name="model_params" value="" />
+    </include> 
+    
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
         <arg name="model_name" value="farmbot_tool_water" />
         <arg name="posX" value="-0.6353" />
-        <arg name="posY" value="-0.34973" />
+        <arg name="posY" value="-0.25" />
         <arg name="posZ" value="1.1777" />
         
         <arg name="yaw"          value="-1.57" />
         <arg name="model_params" value="" />
     </include>
     
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/weeder.xacro" />
+        <arg name="model_name" value="weeder" />
+        <arg name="posX" value="-0.6353" />
+        <arg name="posY" value="-0.15" />
+        <arg name="posZ" value="1.1777" />
+        
+        <arg name="yaw"          value="-1.57" />
+        <arg name="model_params" value="" />
+    </include>
+    
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/soil_sensor.xacro" />
+        <arg name="model_name" value="soil_sensor" />
+        <arg name="posX" value="-0.6353" />
+        <arg name="posY" value="0.15" />
+        <arg name="posZ" value="1.1777" />
+        
+        <arg name="yaw"          value="-1.57" />
+        <arg name="model_params" value="" />
+    </include>  
+    
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seed_bin.xacro" />
+        <arg name="model_name" value="seed_bin" />
+        <arg name="posX" value="-0.6353" />
+        <arg name="posY" value="0.25" />
+        <arg name="posZ" value="1.1777" />
+        
+        <arg name="yaw"          value="-1.57" />
+        <arg name="model_params" value="" />
+    </include>
+   
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/seed_tray.xacro" />
+        <arg name="model_name" value="seed_tray" />
+        <arg name="posX" value="-0.6353" />
+        <arg name="posY" value="0.35" />
+        <arg name="posZ" value="1.1777" />
+        
+        <arg name="yaw"          value="-1.57" />
+        <arg name="model_params" value="" />
+    </include>
+    
+
+    
+
+    
+ 
     
     
+    <!-- 
      <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
         <arg name="model_name" value="farmbot_tool_water_tester" />
@@ -56,8 +117,8 @@
          
         <arg name="yaw"          value="-1.57" />
         <arg name="model_params" value="" />
-    </include>
-    
+    </include> 
+    --> 
     
     
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find h4r_rapid_robot_xacros)/rviz/portal.rviz" />
