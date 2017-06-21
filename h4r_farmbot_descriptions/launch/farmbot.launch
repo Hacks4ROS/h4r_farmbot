@@ -39,6 +39,17 @@
         <arg name="model_params" value="" />
     </include>
     
+    <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" if="$(arg seed_tray)">
+        <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/tool_bay.xacro" />
+        <arg name="model_name" value="tool_bay" />
+        <arg name="posX" value="0" />
+        <arg name="posY" value="0" />
+        <arg name="posZ" value="0" />
+        
+        <arg name="yaw"          value="0" />
+        <arg name="model_params" value="" />
+    </include>
+    
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="$(arg paused)"/>
     </include>
