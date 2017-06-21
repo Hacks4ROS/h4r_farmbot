@@ -17,10 +17,12 @@
     <!-- UTM -->
     <xacro:rr_joint_fixed parent="vertical" child="utm" origin_y="0.0465" origin_z="${-vertical_length/2+0.002}" origin_Y="${-rr_const_pi/2}" /> 
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/utm.xacro"/>
-    
-   
+
+        
+    <!--   
     <xacro:include filename="$(find h4r_farmbot_descriptions)/def/farmbot/toolbays.xacro"/>
-   
+     -->
+        
     <!-- ROS CONTROL PLUGIN -->
     <xacro:rr_roscontrol_controller />
 </robot>
