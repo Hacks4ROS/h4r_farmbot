@@ -7,7 +7,7 @@ difference()
         rotate([0,0,r*120])
         {
             translate([0,12.5,0] )
-            cylinder(16.1,18/2,15/2,true);
+            cylinder(16.1,16/2,15.594/2,true);
         }
     }
 }
