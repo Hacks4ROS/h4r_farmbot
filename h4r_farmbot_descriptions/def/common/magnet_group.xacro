@@ -45,7 +45,7 @@
         <xacro:fb_utm_magnet name="utm_magnetgroup_${name}_2" parent="${parent}" origin_x= "0.010825"  origin_y="-0.00625"  origin_z="${origin_z}"/>
     </xacro:macro>
     
-    <xacro:macro name="fb_sim_magnet" params="name parent origin_x:=0 origin_y:=0 origin_z:=0 origin_R:=0 origin_P:=0 origin_Y:=0 magnet_strength:=2" >
+    <xacro:macro name="fb_sim_magnet" params="name parent origin_x:=0 origin_y:=0 origin_z:=0 origin_R:=0 origin_P:=0 origin_Y:=0 magnet_strength:=3" >
         <rr_joint_fixed parent="${parent}" 
                child="${name}" 
                origin_x="${origin_x}" 
