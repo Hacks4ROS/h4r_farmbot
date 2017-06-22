@@ -14,9 +14,9 @@
         </visual>
         
         <collision name="utm_col">
-            <origin xyz="0 0 0.007" rpy="0 0 0" />
+            <origin xyz="0 0 0.008" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://h4r_farmbot_descriptions/mesh/utm_collision.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="package://h4r_farmbot_descriptions/mesh/utm_collision.dae" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
         
@@ -26,7 +26,7 @@
         </xacro:rr_inertia_cylinder_solid>
     </link>
     
-    <xacro:fb_sim_magnet name="magnet" parent="utm" origin_z="0.008"/>
+    <xacro:fb_sim_magnet name="magnet" parent="utm" origin_z="0.009"/>
     
     <!-- UTM COVER -->
     <xacro:rr_joint_fixed parent="utm" child="utm_cover" origin_z="0.051" origin_P="${-rr_const_pi}" origin_Y="${-rr_const_pi}" />

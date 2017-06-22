@@ -6,7 +6,15 @@
        xmlns:xacro="http://ros.org/wiki/xacro" >
     
        <xacro:macro name="fb_tool_collision" params="origin_x:=0 origin_y:=0 origin_z:=0  origin_R:=0  origin_P:=0 origin_Y:=0">
-            <collision>
+            
+           
+           <collision>
+            <origin xyz="${origin_x} ${origin_y} ${origin_z+0.0135}" rpy="${origin_R} ${origin_P} ${origin_Y}" />
+                <geometry>
+                    <cylinder radius="0.033" length="0.003" />
+                </geometry>
+            </collision>
+           <collision>
                 <origin xyz="${origin_x} ${origin_y} ${origin_z+0.006}" rpy="${origin_R} ${origin_P} ${origin_Y}" />
                 <geometry>
                     <box size="0.063 0.04 0.0074" />
