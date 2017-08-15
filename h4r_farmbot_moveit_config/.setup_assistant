@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: h4r_farmbot_descriptions
+    relative_path: def/farmbot.xacro
+  SRDF:
+    relative_path: config/h4r_farmbot.srdf
+  CONFIG:
+    author_name: Christian Holl
+    author_email: cyborgx1@gmail.com
+    generated_timestamp: 1502397004

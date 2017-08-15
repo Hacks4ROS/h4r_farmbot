@@ -1,0 +1,6 @@
+controller_list:
+  - name: fake_All_controller
+    joints:
+      - rail_joint
+      - boom_joint
+      - vertical_joint
