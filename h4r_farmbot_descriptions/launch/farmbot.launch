@@ -128,7 +128,6 @@
  
     
     
-    <!-- 
      <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >
         <arg name="model_file" value="$(find h4r_farmbot_descriptions)/def/tools/watering_nozzle.xacro" />
         <arg name="model_name" value="farmbot_tool_water_tester" />
@@ -139,7 +138,6 @@
         <arg name="yaw"          value="-1.57" />
         <arg name="model_params" value="" />
     </include> 
-    --> 
     
     
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find h4r_rapid_robot_xacros)/rviz/portal.rviz" />
